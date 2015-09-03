@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+    <form method="POST" action="/">
+        <input type="text" name="q"/>
+        <input type="submit"/>
+    </form>
+
+    <div id="posts">
+        {% for post in posts %}
+            <div><img src="{{post['thumbnailSrc']}}"/>
+            <div>{{ post['name'] }}</div>
+            <div>{{ post['caption'] }}</div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
