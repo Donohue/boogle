@@ -2,13 +2,17 @@
 import json
 import requests
 import os
+from apscheduler.schedulers.blocking import BlockingScheduler
 from pymongo import MongoClient
 
 BYTE_URL = 'https://api.byte.co/v1/posts/latest'
 client = MongoClient(os.environ['MONGOLAB_URI'])
 db = client.get_default_database()
+sched = BlockingScheduler()
 
+@sched.scheduled_job('interval', minutes=1)
 def main():
+    print 'Indexing'
     cursorCollection = db['cursor']
     cursor_dict = cursorCollection.find_one()
     cursor = cursor_dict['data'] if cursor_dict else None
@@ -29,7 +33,8 @@ def main():
     for post in data['posts']:
         post['_id'] = post['id']
         db['posts'].save(post)
+    print 'Done indexing'
 
 if __name__ == '__main__':
-    main()
+    sched.start()
 
