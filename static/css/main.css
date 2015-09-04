@@ -2,6 +2,10 @@ body {
     font-family: 'Courier', monospace;
 }
 
+input {
+    width: 200px;
+}
+
 #posts {
     margin-top: 30px;
 }
