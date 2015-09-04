@@ -1,0 +1,40 @@
+body {
+    font-family: 'Courier', monospace;
+}
+
+#posts {
+    margin-top: 30px;
+}
+
+.post {
+    display: inline-block;
+    padding-bottom: 20px;
+    text-decoration: none;
+}
+
+.post img {
+    display: block;
+    height: 450px;
+}
+
+.post .text {
+    text-align: center;
+}
+
+.post .name {
+    font-weight: bold;
+}
+
+.post:hover .name {
+    text-decoration: underline;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
